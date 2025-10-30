@@ -12,17 +12,30 @@
     <button id="btn-1">Say Hello</button>
 
     <script>
+      // Selects the HTML element (button) with the id "btn-1" and stores it in the variable 'btn'
       const btn = document.getElementById("btn-1");
+
+      // Logs the button element to the browser console (useful for debugging)
       console.log(btn);
 
+      // Adds an event listener to the button that listens for a "click" event
+      // When the button is clicked, the function inside will be executed
       btn.addEventListener("click", function () {
+        
+        // Creates a new <h4> element dynamically using JavaScript
         const heading = document.createElement("h4");
+
+        // Sets the inner text of the newly created <h4> element to "Hello"
         heading.innerText = "Hello";
+
+        // Logs the newly created heading element to the console
         console.log(heading);
 
-        // querySelector
+        // Selects the <body> element from the document using querySelector
         const body = document.querySelector("body");
-        // appendChild
+
+        // Appends the newly created <h4> element as a child inside the <body>
+        // This means the "Hello" heading will appear on the webpage
         body.appendChild(heading);
       });
     </script>
