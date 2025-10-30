@@ -21,30 +21,40 @@
 
     <button id="fix">fix Btn</button>
 
-    
-     <script>
-      
-
-
+    <script>
+      // Selects the button element with the id "fix" and stores it in the variable 'fixBtn'
       const fixBtn = document.getElementById('fix')
 
-      fixBtn.addEventListener('click' , function(){
-          const list =   document.querySelector('ul')
+      // Adds an event listener to the button that listens for a "click" event
+      // When the button is clicked, the function inside will execute
+      fixBtn.addEventListener('click', function() {
+          
+          // Selects the first <ul> element from the document and stores it in the variable 'list'
+          const list = document.querySelector('ul')
+          
+          // Selects all the <li> elements inside the <ul> and stores them in a NodeList (array-like object)
           const allItems = list.querySelectorAll('li')
+          
+          // Logs all the <li> elements to the console for debugging
           console.log(allItems)
+
+          // Accesses the 7th <li> (index 6 because indexing starts from 0)
+          // This is the <li> element that currently contains the number 8
           let IndexThatHas8 = allItems[6]
 
-          const newLi =  document.createElement('li')
+          // Creates a new <li> element dynamically
+          const newLi = document.createElement('li')
 
+          // Sets the text content of the new <li> element to "7"
           newLi.innerText = '7'
 
+          // Logs the newly created <li> element to the console
           console.log(newLi)
 
-          // insertBefore
-          list.insertBefore(newLi , IndexThatHas8)
-         
+          // Uses the 'insertBefore' method to insert the new <li> (with "7")
+          // right before the existing <li> that contains "8"
+          list.insertBefore(newLi, IndexThatHas8)
       })
-
-     </script>
+    </script>
 </body>
 </html>
