@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -113,6 +112,34 @@
     <script>
       // Q Make the filter work
 
+      const dropDown = document.querySelector("select");
+      console.log(dropDown);
+
+      dropDown.addEventListener("change", function () {
+        const choice = dropDown.value;
+
+        const allPrices = document.querySelectorAll(".price");
+        console.log(allPrices);
+
+        // if the choice - none - show all tickets
+        // if the choice is sepecific
+
+        if (choice == "none") {
+          // display all tickets
+           for (let i = 0; i < allPrices.length; i++){
+            allPrices[i].parentElement.style.display = "block";
+           }
+        } else {
+          for (let i = 0; i < allPrices.length; i++) {
+            // comedy != action
+            if (allPrices[i].getAttribute("data-category") != choice) {
+              allPrices[i].parentElement.style.display = "none";
+            } else {
+              allPrices[i].parentElement.style.display = "block";
+            }
+          }
+        }
+      });
     </script>
   </body>
 </html>
