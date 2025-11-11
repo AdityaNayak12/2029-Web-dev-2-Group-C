@@ -1,5 +1,4 @@
 # Introduction to Document Object Model
-
 ## Agenda
 
 **First of all today we will start with Introduction of DOM and then we will solve some fun problems to understand how you can put interactivity to your web pages by using DOM methods and Properties , Today we will target to complete the topics listed below-**
