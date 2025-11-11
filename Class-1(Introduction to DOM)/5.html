@@ -60,8 +60,17 @@
 
       for(let i=0 ; i<cardNodeList.length ; i++){
           cardNodeList[i].addEventListener('dblclick', function(e){
-            const dataColor = e.target.dataset.color
-             e.target.classList.add(dataColor)
+            // const dataColor = e.target.dataset.color
+            //  e.target.classList.add(dataColor)
+
+            //2nd solution
+
+            // getAttribute and setAttribute
+
+            const color = e.target.getAttribute('data-color')
+             e.target.classList.add(color)
+             e.target.setAttribute("data-color" , 'used')
+
           })
       }
     
