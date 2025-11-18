@@ -1,4 +1,4 @@
-// open and close the Modal pop up
+// flags
 let addTaskFlag = false;
 
 // Buttons
@@ -7,7 +7,9 @@ const addBtn = document.querySelector(".add-btn");
 // Elements
 
 const modalCont = document.querySelector(".modal-cont");
-// Toggle Modal Open and Close 
+const taskArea = document.querySelector(".textArea-cont");
+const mainCont = document.querySelector(".main-cont");
+// Toggle Modal Open and Close
 
 addBtn.addEventListener("click", function () {
   if (addTaskFlag == false) {
@@ -19,4 +21,23 @@ addBtn.addEventListener("click", function () {
   }
 });
 
+modalCont.addEventListener("keydown", function (e) {
+  if (e.key == "Shift") {
+    const task = taskArea.value;
+    generateTicket(task);
+  }
+});
 
+function generateTicket(taskParam) {
+  const ticketCont = document.createElement("div");
+  ticketCont.setAttribute("class", "ticket-cont");
+
+  ticketCont.innerHTML = `<div class="ticket-color"></div>
+            <div class="ticket-id">1234567</div>
+            <div class="task-area">${taskParam}</div>
+            <div class="ticket-lock"><i class="fa-solid fa-lock"></i></div>`;
+
+  mainCont.appendChild(ticketCont);
+  modalCont.style.display = 'none'
+  addTaskFlag = false;
+}
