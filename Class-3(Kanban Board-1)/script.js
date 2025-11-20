@@ -4,11 +4,18 @@ let addTaskFlag = false;
 // Buttons
 const addBtn = document.querySelector(".add-btn");
 
+
+//variables
+
+let modalPriorityColor = 'lightpink'
+
 // Elements
 
 const modalCont = document.querySelector(".modal-cont");
 const taskArea = document.querySelector(".textArea-cont");
 const mainCont = document.querySelector(".main-cont");
+const allPriorityColors = document.querySelectorAll('.priority-color')
+console.log(allPriorityColors)
 // Toggle Modal Open and Close
 
 addBtn.addEventListener("click", function () {
