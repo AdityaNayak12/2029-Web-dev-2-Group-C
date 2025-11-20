@@ -1,5 +1,7 @@
 // flags
 let addTaskFlag = false;
+let openLock = "fa-lock-open";
+let closeLock = "fa-lock";
 
 // Buttons
 const addBtn = document.querySelector(".add-btn");
@@ -14,6 +16,7 @@ const modalCont = document.querySelector(".modal-cont");
 const taskArea = document.querySelector(".textArea-cont");
 const mainCont = document.querySelector(".main-cont");
 const allPriorityColors = document.querySelectorAll(".priority-color");
+
 console.log(allPriorityColors);
 // Toggle Modal Open and Close
 
@@ -30,13 +33,13 @@ addBtn.addEventListener("click", function () {
 modalCont.addEventListener("keydown", function (e) {
   if (e.key == "Shift") {
     const task = taskArea.value;
-    const id = shortid()
-    console.log(id)
-    generateTicket(task , modalPriorityColor , id);
+    const id = shortid();
+    console.log(id);
+    generateTicket(task, modalPriorityColor, id);
   }
 });
 
-function generateTicket(taskParam, modalPriorityColor , id) {
+function generateTicket(taskParam, modalPriorityColor, id) {
   const ticketCont = document.createElement("div");
   ticketCont.setAttribute("class", "ticket-cont");
 
@@ -48,8 +51,10 @@ function generateTicket(taskParam, modalPriorityColor , id) {
   mainCont.appendChild(ticketCont);
   modalCont.style.display = "none";
   addTaskFlag = false;
-}
 
+  // handle the lock
+  handleLock(ticketCont);
+}
 
 // Priority Color Setting for Ticket
 
@@ -65,3 +70,25 @@ allPriorityColors.forEach(function (colorElem) {
     console.log(modalPriorityColor);
   });
 });
+
+// Handle the Lock to update ticket Task
+function handleLock(ticket) {
+  const lockContainer = ticket.querySelector(".ticket-lock");
+  const lockIcon = lockContainer.children[0];
+
+  lockIcon.addEventListener("click", function () {
+    const ticketTask = ticket.querySelector(".task-area");
+    if (lockIcon.classList.contains(closeLock)) {
+      lockIcon.classList.remove(closeLock);
+      lockIcon.classList.add(openLock);
+
+      // tickt task editable
+      ticketTask.setAttribute("contenteditable", "true");
+    } else {
+      lockIcon.classList.remove(openLock);
+      lockIcon.classList.add(closeLock);
+      // tickt task not editable
+      ticketTask.setAttribute("contenteditable", "false");
+    }
+  });
+}
