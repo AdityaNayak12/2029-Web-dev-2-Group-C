@@ -30,16 +30,18 @@ addBtn.addEventListener("click", function () {
 modalCont.addEventListener("keydown", function (e) {
   if (e.key == "Shift") {
     const task = taskArea.value;
-    generateTicket(task , modalPriorityColor);
+    const id = shortid()
+    console.log(id)
+    generateTicket(task , modalPriorityColor , id);
   }
 });
 
-function generateTicket(taskParam, modalPriorityColor) {
+function generateTicket(taskParam, modalPriorityColor , id) {
   const ticketCont = document.createElement("div");
   ticketCont.setAttribute("class", "ticket-cont");
 
   ticketCont.innerHTML = `<div class="ticket-color" style="background-color:${modalPriorityColor}"></div>
-            <div class="ticket-id">1234567</div>
+            <div class="ticket-id">${id}</div>
             <div class="task-area">${taskParam}</div>
             <div class="ticket-lock"><i class="fa-solid fa-lock"></i></div>`;
 
@@ -47,6 +49,9 @@ function generateTicket(taskParam, modalPriorityColor) {
   modalCont.style.display = "none";
   addTaskFlag = false;
 }
+
+
+// Priority Color Setting for Ticket
 
 allPriorityColors.forEach(function (colorElem) {
   colorElem.addEventListener("click", function () {
