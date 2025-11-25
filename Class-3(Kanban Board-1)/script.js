@@ -12,18 +12,6 @@ let ticketsArr = [];
 const ticketsfromLS = JSON.parse(localStorage.getItem("myTickets")) || [];
 console.log(ticketsfromLS);
 
-//
-
-function init() {
-  if (localStorage.getItem("myTickets")) {
-    ticketsArr.forEach(function (ticket) {
-      generateTicket(ticket.ticketTask, ticket.ticketColor, ticket.ticketId);
-    });
-  }
-}
-
-init();
-
 //variables
 
 let modalPriorityColor = "lightpink";
@@ -83,6 +71,16 @@ function generateTicket(taskParam, modalPriorityColor, id) {
 
   handleColor(ticketCont);
 }
+
+function init() {
+  if (localStorage.getItem("myTickets")) {
+    ticketsfromLS.forEach(function (ticket) {
+      generateTicket(ticket.ticketTask, ticket.ticketColor, ticket.ticketId);
+    });
+  }
+}
+
+init();
 
 // Priority Color Setting for Ticket
 
