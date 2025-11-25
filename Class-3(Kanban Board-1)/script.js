@@ -2,6 +2,7 @@
 let addTaskFlag = false;
 let openLock = "fa-lock-open";
 let closeLock = "fa-lock";
+let colorsArray = ['lightpink' , 'lightgreen' , 'lightblue' , 'black']
 
 // Buttons
 const addBtn = document.querySelector(".add-btn");
@@ -54,6 +55,8 @@ function generateTicket(taskParam, modalPriorityColor, id) {
 
   // handle the lock
   handleLock(ticketCont);
+
+  handleColor(ticketCont)
 }
 
 // Priority Color Setting for Ticket
@@ -91,4 +94,26 @@ function handleLock(ticket) {
       ticketTask.setAttribute("contenteditable", "false");
     }
   });
+}
+
+
+// handle Priority Color
+
+function handleColor(ticket){
+   const ticketColorBand = ticket.querySelector('.ticket-color')
+   ticketColorBand.addEventListener('click' , function(){
+    let currentColor =   ticketColorBand.style.backgroundColor
+     // lightgreen
+    // findIndex
+    let currentColorIdx = colorsArray.findIndex(function(color){
+     return  currentColor == color
+    })
+    const nextColorIdx = currentColorIdx +1 // 4
+    // 
+
+     
+
+    ticketColorBand.style.backgroundColor =  nextColor
+
+   })
 }
