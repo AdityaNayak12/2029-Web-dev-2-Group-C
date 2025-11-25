@@ -2,10 +2,27 @@
 let addTaskFlag = false;
 let openLock = "fa-lock-open";
 let closeLock = "fa-lock";
-let colorsArray = ['lightpink' , 'lightgreen' , 'lightblue' , 'black']
+let colorsArray = ["lightpink", "lightgreen", "lightblue", "black"];
 
 // Buttons
 const addBtn = document.querySelector(".add-btn");
+
+let ticketsArr = [];
+
+const ticketsfromLS = JSON.parse(localStorage.getItem("myTickets")) || [];
+console.log(ticketsfromLS);
+
+//
+
+function init() {
+  if (localStorage.getItem("myTickets")) {
+    ticketsArr.forEach(function (ticket) {
+      generateTicket(ticket.ticketTask, ticket.ticketColor, ticket.ticketId);
+    });
+  }
+}
+
+init();
 
 //variables
 
@@ -37,6 +54,14 @@ modalCont.addEventListener("keydown", function (e) {
     const id = shortid();
     console.log(id);
     generateTicket(task, modalPriorityColor, id);
+
+    ticketsArr.push({
+      ticketTask: task,
+      ticketColor: modalPriorityColor,
+      ticketId: id,
+    });
+
+    updateLocalStorage();
   }
 });
 
@@ -56,7 +81,7 @@ function generateTicket(taskParam, modalPriorityColor, id) {
   // handle the lock
   handleLock(ticketCont);
 
-  handleColor(ticketCont)
+  handleColor(ticketCont);
 }
 
 // Priority Color Setting for Ticket
@@ -96,26 +121,26 @@ function handleLock(ticket) {
   });
 }
 
-
 // handle Priority Color
 
-function handleColor(ticket){
-   const ticketColorBand = ticket.querySelector('.ticket-color')
-   ticketColorBand.addEventListener('click' , function(){
-    let currentColor =   ticketColorBand.style.backgroundColor
-     // lightgreen
+function handleColor(ticket) {
+  const ticketColorBand = ticket.querySelector(".ticket-color");
+  ticketColorBand.addEventListener("click", function () {
+    let currentColor = ticketColorBand.style.backgroundColor;
+    // lightgreen
     // findIndex
-    let currentColorIdx = colorsArray.findIndex(function(color){
-     return  currentColor == color
-    })
-    currentColorIdx++
-    const nextColorIdx = currentColorIdx % colorsArray.length
-    const nextColor = colorsArray[nextColorIdx]
-    // 
+    let currentColorIdx = colorsArray.findIndex(function (color) {
+      return currentColor == color;
+    });
+    currentColorIdx++;
+    const nextColorIdx = currentColorIdx % colorsArray.length;
+    const nextColor = colorsArray[nextColorIdx];
+    //
 
-     
+    ticketColorBand.style.backgroundColor = nextColor;
+  });
+}
 
-    ticketColorBand.style.backgroundColor =  nextColor
-
-   })
+function updateLocalStorage() {
+  localStorage.setItem("myTickets", JSON.stringify(ticketsArr));
 }
