@@ -108,7 +108,9 @@ function handleColor(ticket){
     let currentColorIdx = colorsArray.findIndex(function(color){
      return  currentColor == color
     })
-    const nextColorIdx = currentColorIdx +1 // 4
+    currentColorIdx++
+    const nextColorIdx = currentColorIdx % colorsArray.length
+    const nextColor = colorsArray[nextColorIdx]
     // 
 
      
