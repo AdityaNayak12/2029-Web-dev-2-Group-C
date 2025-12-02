@@ -7,10 +7,12 @@ let colorsArray = ["lightpink", "lightgreen", "lightblue", "black"];
 // Buttons
 const addBtn = document.querySelector(".add-btn");
 
-let ticketsArr = [];
-
 const ticketsfromLS = JSON.parse(localStorage.getItem("myTickets")) || [];
 console.log(ticketsfromLS);
+
+
+let ticketsArr = ticketsfromLS ;
+
 
 //variables
 

@@ -495,3 +495,39 @@ kbd {
 .ticket-cont {
     animation: slideIn 0.3s ease-out;
 }
+
+/* Date Picker CSS */
+
+/* Minimal styling for the due date row */
+.due-date-row {
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  
+  /* Minimal label styling */
+  .due-label {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+  
+  /* Very subtle input styling (matches your modal theme) */
+  .due-date-input {
+    padding: 0.6rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    background: #ffffff;
+    color: var(--text-primary);
+    width: 100%;
+  }
+  
+  /* Optional: helper text */
+  .due-help {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+  }
+  
+
