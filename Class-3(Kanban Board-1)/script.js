@@ -4,6 +4,31 @@ let openLock = "fa-lock-open";
 let closeLock = "fa-lock";
 let colorsArray = ["lightpink", "lightgreen", "lightblue", "black"];
 
+const months = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+
+
+const dueDateInput = document.getElementById("dueDate");
+
+
+function todayISO() {
+  const t = new Date();
+  const y = String(t.getFullYear()); 
+  const m = t.getMonth();
+  const month = months[m]
+  console.log(month)
+  const d = String(t.getDate())
+  console.log(d)
+  return `${y}-${month}-${d}`;
+}
+
+dueDateInput.setAttribute('min' , todayISO())
+
+todayISO()
+
+
 // Buttons
 const addBtn = document.querySelector(".add-btn");
 
@@ -41,9 +66,11 @@ addBtn.addEventListener("click", function () {
 modalCont.addEventListener("keydown", function (e) {
   if (e.key == "Shift") {
     const task = taskArea.value;
+    const dueDateValue = dueDateInput.value
+    console.log(dueDateValue)
     const id = shortid();
     console.log(id);
-    generateTicket(task, modalPriorityColor, id);
+    generateTicket(task, modalPriorityColor, id , dueDateValue);
 
     ticketsArr.push({
       ticketTask: task,
@@ -55,13 +82,14 @@ modalCont.addEventListener("keydown", function (e) {
   }
 });
 
-function generateTicket(taskParam, modalPriorityColor, id) {
+function generateTicket(taskParam, modalPriorityColor, id , dueDate) {
   const ticketCont = document.createElement("div");
   ticketCont.setAttribute("class", "ticket-cont");
 
   ticketCont.innerHTML = `<div class="ticket-color" style="background-color:${modalPriorityColor}"></div>
-            <div class="ticket-id">${id}</div>
+            <div class="ticket-id">${id} </div>
             <div class="task-area">${taskParam}</div>
+            <div class="ticket-due">📅 ${dueDate}</div>
             <div class="ticket-lock"><i class="fa-solid fa-lock"></i></div>`;
 
   mainCont.appendChild(ticketCont);
