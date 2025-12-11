@@ -27,6 +27,8 @@
       <div class="child">3</div>
       <div class="child">4</div>
       <div class="child">5</div>
+   
+      
       
     </div>
 
@@ -39,13 +41,11 @@
       const btn = document.querySelector('button')
 
     // Adding eventLisnters to each and every child will use a lot of memory
+       parent.addEventListener('click' , function(e){
+            console.log(e.target.innerText)
+       })
 
-
-      children.forEach(function (child) {
-        child.addEventListener("click", function () {
-          console.log(`Child Clicked ${child.innerText} `);
-        });
-      });
+    
 
 
       // Dynamically Created elements will not respond to events
@@ -64,3 +64,12 @@
     </script>
   </body>
 </html>
+
+
+
+
+    Parent  - e - target
+
+       Child1
+
+       Child2 - e - target
