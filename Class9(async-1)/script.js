@@ -1,18 +1,22 @@
-let b = 20;
+console.log('Start')
 
-let a = 40;
 
 function hello() {
-  for (let i = 0; i < 1000000000; i++) {
+  for (let i = 0; i < 10; i++) {
     console.log("hello");
   }
 }
 
+function bye(){
+    for (let i = 0; i < 10; i++) {
+        console.log("Bye");
+      }  
+}
+// hello() // Synchronous
+setTimeout(hello, 4000);
+setTimeout(bye , 2000);
 
 
+console.log("End")
 
-setTimeout(hello , 2000)
 
-console.log(a);
-
-console.log(b);
