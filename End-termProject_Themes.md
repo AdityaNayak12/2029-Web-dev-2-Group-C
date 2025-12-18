@@ -194,7 +194,6 @@ Presenting meaningful insights from data in a clear, visual way.
 
 ---
 
-## How You Can Frame This to Students (Suggested Line)
 
 > **“Choose ONE theme and design your own problem statement within it.
 > Your project must heavily use JavaScript, DOM manipulation, and user interaction.
