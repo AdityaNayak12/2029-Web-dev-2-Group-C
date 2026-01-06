@@ -37,4 +37,22 @@ fileSystem.readFile("f3.txt", function (err, data) {
   console.log("This is file 3 data -> " + data);
 });
 
+
+fileSystem.readFile("f4.txt", function (err, data) {
+    if (err) {
+      console.log("Cannot read file", err);
+    }
+  
+    console.log("This is file 3 data -> " + data);
+  });
+
+
+fileSystem.readFile("f5.txt", function (err, data) {
+    if (err) {
+      console.log("Cannot read file", err);
+    }
+  
+    console.log("This is file 3 data -> " + data);
+  });
+
 console.log("End");
