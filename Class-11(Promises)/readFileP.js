@@ -22,3 +22,5 @@ readFilePromise1.catch(function (error) {
 });
 
 console.log("End");
+
+// Promise chaining
