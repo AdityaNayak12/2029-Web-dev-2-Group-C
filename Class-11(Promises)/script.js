@@ -17,5 +17,18 @@ const promise1 = new Promise(function(resolve , reject){
     }
 })
 
+// then and catch
 
-console.log(promise1)
+
+promise1.then(function(result){
+   console.log("then -> "+ result)
+})
+
+promise1.catch(function(err){
+    console.log('catch -> ' + err)
+})
+
+// settle
+promise1.finally(function(){
+    console.log('Coin toss done')
+})
