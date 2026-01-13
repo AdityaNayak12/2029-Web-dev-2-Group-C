@@ -24,12 +24,16 @@ function generateBill(callback) {
 
 function serverOrder() {
   placeOrder("coffee", function (orderPlaced) {
+    console.log(orderPlaced);
     processOrder(orderPlaced, function (orderReady) {
-      generateBill(function (billgenerated) {});
-       // here
-          //here
-             //here
-                // and you have a callback hell
+      console.log(orderReady);
+      generateBill(function (billgenerated) {
+        console.log(billgenerated);
+      });
+        // here
+           //here
+              //here
+                 // and you have a callback hell
     });
   });
 }
