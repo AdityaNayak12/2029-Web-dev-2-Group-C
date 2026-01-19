@@ -2,21 +2,8 @@
 // Promise.all
 // Promise.allSettled
 
-
 // Promise.race
 // Promise.any
-
-
-
-
-
-
-
-
-
-
-
-
 
 function fetchUserData() {
   return new Promise((resolve) => {
@@ -42,3 +29,41 @@ function fetchUserComments() {
     }, 800);
   });
 }
+
+// promise chaining and solve this
+
+// fetchUserData()
+//   .then(function (result) {
+//     console.log(result);
+//     return fetchUserPosts();
+//   })
+//   .then(function (posts) {
+//     console.log(posts);
+//     return fetchUserComments();
+//   })
+//   .then(function (comments) {
+//     console.log(comments);
+//   }); // executes in sequence , results are also in sequence
+
+// using promise combinators
+
+// Promise.all
+
+// Promise.all([fetchUserData(), fetchUserPosts(), fetchUserComments()]).then(
+//   function (result) {
+//     console.log(result[0]);
+//     console.log(result[1]);
+//     console.log(result[2]);
+//   }
+// ).catch(function(err){
+//     console.log(err)
+// });
+
+
+Promise.allSettled([fetchUserData(), fetchUserPosts(), fetchUserComments()]).then(
+    function (result) {
+      console.log(result)
+    }
+  ).catch(function(err){
+      console.log(err)
+  });
