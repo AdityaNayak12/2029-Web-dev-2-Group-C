@@ -2,19 +2,9 @@
 
 function fetchFromOpenWeather() {
   return new Promise((resolve, reject) =>
-    setTimeout(() => resolve("21 C in Bengaluru"), 1000)
+    setTimeout(() => reject("No Data"), 400)
   );
 }
-
-
-
-
-
-
-
-
-
-
 
 function fetchFromWeatherAPI() {
   return new Promise((resolve, reject) =>
@@ -27,3 +17,13 @@ function fetchFromAccuWeather() {
     setTimeout(() => resolve("20.5 C in Bengaluru"), 1200)
   );
 }
+
+//
+
+Promise.race([
+  fetchFromOpenWeather(),
+  fetchFromWeatherAPI(),
+  fetchFromAccuWeather(),
+]).then(function (result) {
+  console.log(result);
+});
